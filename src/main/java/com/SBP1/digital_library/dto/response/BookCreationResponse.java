@@ -1,4 +1,4 @@
-package com.SBP1.digital_library.dto;
+package com.SBP1.digital_library.dto.response;
 
 import com.SBP1.digital_library.enums.BookType;
 import lombok.*;

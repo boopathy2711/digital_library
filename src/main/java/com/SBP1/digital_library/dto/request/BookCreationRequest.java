@@ -1,4 +1,4 @@
-package com.SBP1.digital_library.dto;
+package com.SBP1.digital_library.dto.request;
 
 import com.SBP1.digital_library.enums.BookType;
 import com.SBP1.digital_library.model.Books;
@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 
-import java.awt.print.Book;
 import java.util.Date;
 
 @Getter

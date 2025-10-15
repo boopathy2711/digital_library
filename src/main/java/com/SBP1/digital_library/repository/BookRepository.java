@@ -1,8 +1,7 @@
 package com.SBP1.digital_library.repository;
 
-import com.SBP1.digital_library.dto.BookFilterResponse;
+import com.SBP1.digital_library.dto.response.BookFilterResponse;
 import com.SBP1.digital_library.model.Books;
-import com.SBP1.digital_library.service.BookFilter.BookFilterFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -25,4 +24,5 @@ public interface BookRepository extends JpaRepository<Books, Integer> {
     List<Books> findByTitle(String value);
     List<Books> findByTitleLike(String value);
     List<Books> findByAuthorName(String value);
+    Books findEntityByBookNo(String value);
 }

@@ -1,7 +1,6 @@
-package com.SBP1.digital_library.dto;
+package com.SBP1.digital_library.dto.response;
 
 import com.SBP1.digital_library.enums.BookType;
-import com.SBP1.digital_library.model.Author;
 import lombok.*;
 
 import java.util.Date;

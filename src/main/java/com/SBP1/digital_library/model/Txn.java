@@ -22,7 +22,7 @@ public class Txn{
     @Column
     private String txnId;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private TxnStatus txnStatus;
 
     private Double settlementAmount;
@@ -35,7 +35,7 @@ public class Txn{
     @JoinColumn
     private LibUser libUser;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn
     private Books books;
 }

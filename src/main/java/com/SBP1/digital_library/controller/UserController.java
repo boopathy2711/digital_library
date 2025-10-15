@@ -1,13 +1,16 @@
 package com.SBP1.digital_library.controller;
 
-import com.SBP1.digital_library.dto.UserCreationRequest;
-import com.SBP1.digital_library.dto.UserCreationResponse;
-import com.SBP1.digital_library.dto.UserFilterResponse;
+import com.SBP1.digital_library.dto.GenericResponse;
+import com.SBP1.digital_library.dto.request.UserCreationRequest;
+import com.SBP1.digital_library.dto.response.UserCreationResponse;
+import com.SBP1.digital_library.dto.response.UserFilterResponse;
 import com.SBP1.digital_library.enums.Operator;
 import com.SBP1.digital_library.enums.UserFilter;
-import com.SBP1.digital_library.model.LibUser;
+import com.SBP1.digital_library.exceptions.UserException;
 import com.SBP1.digital_library.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
