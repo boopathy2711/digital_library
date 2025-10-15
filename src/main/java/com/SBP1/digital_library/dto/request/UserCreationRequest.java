@@ -1,10 +1,9 @@
-package com.SBP1.digital_library.dto;
+package com.SBP1.digital_library.dto.request;
 
 import com.SBP1.digital_library.enums.UserStatus;
 import com.SBP1.digital_library.model.LibUser;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.apache.catalina.User;
 
 import java.util.Date;
 

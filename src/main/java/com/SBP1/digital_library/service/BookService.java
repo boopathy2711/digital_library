@@ -1,20 +1,19 @@
 package com.SBP1.digital_library.service;
 
-import com.SBP1.digital_library.dto.BookCreationRequest;
-import com.SBP1.digital_library.dto.BookCreationResponse;
-import com.SBP1.digital_library.dto.BookFilterResponse;
+import com.SBP1.digital_library.dto.request.BookCreationRequest;
+import com.SBP1.digital_library.dto.response.BookCreationResponse;
+import com.SBP1.digital_library.dto.response.BookFilterResponse;
 import com.SBP1.digital_library.enums.BookFilter;
 import com.SBP1.digital_library.enums.Operator;
-import com.SBP1.digital_library.enums.UserFilter;
 import com.SBP1.digital_library.model.Author;
 import com.SBP1.digital_library.model.Books;
+import com.SBP1.digital_library.model.LibUser;
 import com.SBP1.digital_library.repository.BookRepository;
 import com.SBP1.digital_library.service.BookFilter.BookFilterFactory;
 import com.SBP1.digital_library.service.BookFilter.BookFilterStratergy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -68,5 +67,15 @@ public class BookService {
     public List<BookFilterResponse> getBooks(){
         return bookRepository.findAllBooks();
     }
+
+    public Books checkBookIsValid(String bookNo){
+        return bookRepository.findEntityByBookNo(bookNo);
+    }
+
+    public void markBookUnavailable(Books booksFromDB, LibUser userFromDB){
+        booksFromDB.setLibUser(userFromDB);
+        bookRepository.save(booksFromDB);
+    }
+
 
 }

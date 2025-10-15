@@ -1,8 +1,8 @@
 package com.SBP1.digital_library.service;
 
-import com.SBP1.digital_library.dto.UserCreationRequest;
-import com.SBP1.digital_library.dto.UserCreationResponse;
-import com.SBP1.digital_library.dto.UserFilterResponse;
+import com.SBP1.digital_library.dto.request.UserCreationRequest;
+import com.SBP1.digital_library.dto.response.UserCreationResponse;
+import com.SBP1.digital_library.dto.response.UserFilterResponse;
 import com.SBP1.digital_library.enums.Operator;
 import com.SBP1.digital_library.enums.UserFilter;
 import com.SBP1.digital_library.enums.UserType;
@@ -11,7 +11,6 @@ import com.SBP1.digital_library.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -59,5 +58,9 @@ public class UserService {
                 }
         }
         return List.of();
+    }
+
+    public LibUser checkUser(String email){
+        return userRepository.findEntityByEmail(email);
     }
 }

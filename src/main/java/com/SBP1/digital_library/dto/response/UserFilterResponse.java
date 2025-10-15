@@ -1,6 +1,4 @@
-package com.SBP1.digital_library.dto;
-
-import lombok.*;
+package com.SBP1.digital_library.dto.response;
 
 
 public interface UserFilterResponse {

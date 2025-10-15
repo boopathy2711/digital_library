@@ -1,6 +1,6 @@
 package com.SBP1.digital_library.service.BookFilter;
 
-import com.SBP1.digital_library.dto.BookFilterResponse;
+import com.SBP1.digital_library.dto.response.BookFilterResponse;
 import com.SBP1.digital_library.enums.Operator;
 import com.SBP1.digital_library.model.Books;
 import com.SBP1.digital_library.repository.BookRepository;
