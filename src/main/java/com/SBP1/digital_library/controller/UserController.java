@@ -24,8 +24,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/addStudent")
-    public UserCreationResponse addStudent(@RequestBody @Validated UserCreationRequest request){
-        return userService.addStudent(request);
+    public GenericResponse addStudent(@RequestBody @Validated UserCreationRequest request){
+        UserCreationResponse userCreationResponse = userService.addStudent(request);
+        return GenericResponse.builder().data(userCreationResponse).code(0).message("User Created Successfully").build();
     }
 
     @GetMapping("/filter")
