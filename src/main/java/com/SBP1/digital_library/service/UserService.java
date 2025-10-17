@@ -1,6 +1,8 @@
 package com.SBP1.digital_library.service;
 
+import com.SBP1.digital_library.dto.request.AdminCreationRequest;
 import com.SBP1.digital_library.dto.request.UserCreationRequest;
+import com.SBP1.digital_library.dto.response.AdminCreationResponse;
 import com.SBP1.digital_library.dto.response.UserCreationResponse;
 import com.SBP1.digital_library.dto.response.UserFilterResponse;
 import com.SBP1.digital_library.enums.Operator;
@@ -62,5 +64,16 @@ public class UserService {
 
     public LibUser checkUser(String email){
         return userRepository.findEntityByEmail(email);
+    }
+
+    public AdminCreationResponse addAdmin(AdminCreationRequest request) {
+        LibUser libUser = request.toLibUser();
+        libUser.setUserType(UserType.ADMIN);
+        LibUser userFromDB = userRepository.save(libUser);
+        return AdminCreationResponse.builder().
+                userName(userFromDB.getName()).
+                userPhone(userFromDB.getPhoneNo()).
+                userEmail(userFromDB.getEmail()).
+                userAddress(userFromDB.getAddress()).build();
     }
 }

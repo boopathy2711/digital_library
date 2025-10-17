@@ -1,5 +1,6 @@
 package com.SBP1.digital_library.controller;
 
+import com.SBP1.digital_library.dto.GenericResponse;
 import com.SBP1.digital_library.dto.request.BookCreationRequest;
 import com.SBP1.digital_library.dto.response.BookCreationResponse;
 import com.SBP1.digital_library.dto.response.BookFilterResponse;
@@ -22,8 +23,9 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping("/add")
-    public BookCreationResponse addBook(@RequestBody @Validated BookCreationRequest bookCreationRequest) {
-        return bookService.addBook(bookCreationRequest);
+    public GenericResponse addBook(@RequestBody @Validated BookCreationRequest bookCreationRequest) {
+        BookCreationResponse bookCreationResponse = bookService.addBook(bookCreationRequest);
+        return GenericResponse.builder().data(bookCreationResponse).code(0).message("Book Added Successfully").build();
     }
 
     @GetMapping("/filter")
