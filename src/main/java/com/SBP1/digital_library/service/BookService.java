@@ -5,15 +5,19 @@ import com.SBP1.digital_library.dto.response.BookCreationResponse;
 import com.SBP1.digital_library.dto.response.BookFilterResponse;
 import com.SBP1.digital_library.enums.BookFilter;
 import com.SBP1.digital_library.enums.Operator;
+import com.SBP1.digital_library.exceptions.BookException;
+import com.SBP1.digital_library.exceptions.UserException;
 import com.SBP1.digital_library.model.Author;
 import com.SBP1.digital_library.model.Books;
 import com.SBP1.digital_library.model.LibUser;
 import com.SBP1.digital_library.repository.BookRepository;
 import com.SBP1.digital_library.service.BookFilter.BookFilterFactory;
 import com.SBP1.digital_library.service.BookFilter.BookFilterStratergy;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.annotation.ElementType;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -30,14 +34,9 @@ public class BookService {
     @Autowired
     private BookFilterFactory bookFilterFactory;
 
+    @Transactional(rollbackOn ={BookException.class, UserException.class} )
     public BookCreationResponse addBook(BookCreationRequest bookCreationRequest){
         Author authorFromDB = authorService.getAuthor(bookCreationRequest.getAuthorEmail());
-//        if(authorFromDB==null){
-//            authorFromDB = authorService.addAuthor(Author.builder().
-//                    id(UUID.randomUUID().toString()).
-//                    name(bookCreationRequest.getAuthorName())
-//                    .email(bookCreationRequest.getAuthorEmail()).createdOn(new Date()).updatedOn(new Date()).build());
-//        }
         Books books = bookCreationRequest.toBook();
         if(authorFromDB==null){
             books.setAuthor(Author.builder().
